@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Flyaway's Blog
-description: "Flyaway的博客"
+title: PinkingS's Blog
+description: "PinkingS的博客"
 ---
 <div class="row" id="home-page">
 <article class="span8">
