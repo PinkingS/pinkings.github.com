@@ -14,14 +14,12 @@ markdown: rdiscount
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
 #
-title : Flyaway's Blog
-tagline: 旁收杂学无事忙,情通天下日月长
+title : PinkingS's Blog
+tagline: 在程序媛的路上，做最喜欢的事
 author :
-  name : Flyaway
-  email : flyaway1217@gmail.com
-  github : flyaway1217
-  twitter : 
-  feedburner :
+  name : PinkingS
+  email : shangliu26@gmail.com
+  github : pinkings
 
 # The production_url is only used when full-domain names are needed
 # such as sitemap.txt 
@@ -85,7 +83,7 @@ JB :
   comments :
     provider : disqus
     disqus :
-      short_name : zhouyichu
+      short_name : PinkingS
     livefyre :
       site_id : 123
     intensedebate :

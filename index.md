@@ -1,6 +1,6 @@
 ---
 layout: page
-title: PinkingS's Blog
+title: PinkingS
 description: "PinkingS的博客"
 ---
 <div class="row" id="home-page">
