@@ -12,5 +12,5 @@ group: navigation
 
 Email:shangliu26@gmail.com
 
-新浪微博:[s小柳要奋斗](http://weibo.com/pinkingS "weibo.com/pinkingS")
+新浪微博:[s小柳要奋斗](http://weibo.com/pinkingS "http://weibo.com/pinkingS")
 
