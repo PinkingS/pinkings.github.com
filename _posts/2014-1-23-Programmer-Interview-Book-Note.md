@@ -99,6 +99,4 @@ float
 
 [^1]: this is just a test...
 
-This is just a [baidu][3]test...
 
-[3]: http://baidu.com "BaiDu"
