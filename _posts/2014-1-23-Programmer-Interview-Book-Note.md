@@ -98,3 +98,7 @@ float
 第三点要说的是，因为b是(signed)char*类型的，所以要求输出32位十六进制时会在左端按正负补0或1，0x56/0x78的最高位都是0，所以会在左端补0而输出0x00000056/0x00000078，如果a的值为0x12348678,而输出*(b+1)，由于0x86的最高位为1所以会在左端补1而输出FFFFFF86.
 
 [^1]: this is just a test...
+
+This is just a [baidu][3]test...
+
+[3]: http://baidu.com "BaiDu"
