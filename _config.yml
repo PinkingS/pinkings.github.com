@@ -11,6 +11,10 @@ markdown: rdiscount
 #markdown: kramdown
 #markdown: Pandoc
 
+rdiscount:
+  extensions:
+    - footnotes 
+
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
 #
