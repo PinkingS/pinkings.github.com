@@ -113,18 +113,20 @@ float型存储方式：
 
 **面试例题3**
 
-解析中'这个的结果是x和y相同位的一半'不太准确，应该是x和y相同位的和的一半。
+解析中"这个的结果是x和y相同位的一半"不太准确，应该是x和y相同位的和的一半。
 
 ##5.6 ab交换##
 
 **面试例题1**
 
-给出的两种方案都不太好，方案一没有考虑a+b溢出的情况，方案二的strs[]又给人感觉程序没有写完整一样，可以结合一下，PinkingS在这里给出一种解法
+给出的两种方案都不太好，方案一没有考虑a+b溢出的情况，方案二的strs[]又给人感觉程序没有写完整一样，可以结合一下，PinkingS在这里给出一种解法:
 
+{% highlight C++ %}
 	int findLarger(int a, int b){
 		int z = (unsigned)(a-b) >> (sizeof(int) * 8 - 1);
 		return (1 - z) * a + z * b;
 	}
+{% endhighlight %}
 
 #第6章 预处理、const与sizeof#
 
@@ -136,7 +138,9 @@ float型存储方式：
 
 扩展一下，现在知道这个变量的地址，求结构体的首地址
 
-	#define FIND(struct,pt,e ) ((size_t)pt-(size_t)(&(((struct*)0)->e)))
+{% highlight Java %}
+#define FIND(struct,pt,e ) ((size_t)pt-(size_t)(&(((struct*)0)->e)))
+{% endhighlight %}
 
 **面试例题2**
 
@@ -152,11 +156,12 @@ float型存储方式：
 
 例如，如果下面的宏定义参数不加括号：
 
-{% highlight %}
+{% highlight Java %}
 #define COM(A+B) A*B
 {% endhighlight %}
 
-那么`COM(1+2,3)`会得到错误的结果
+那么`COM(1+2,3)`会得到错误的结果.
+
 
 **未完待续。。。**
 
