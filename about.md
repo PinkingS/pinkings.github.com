@@ -28,5 +28,7 @@ group: navigation
 
 Email:<shangliu26@gmail.com>
 
+GitHub:[PinkingS](https://github.com/PinkingS)
+
 新浪微博:[s小柳要奋斗](http://weibo.com/pinkingS "http://weibo.com/pinkingS")
 
