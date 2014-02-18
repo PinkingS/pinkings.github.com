@@ -76,6 +76,7 @@ public:
 
 总结如图：
 
+![img](/assets/image/posts/interview-book/interview-book-c11.png =725x280)
 
 ##11.3 虚函数继承和虚继承##
 
