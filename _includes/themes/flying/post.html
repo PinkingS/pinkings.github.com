@@ -10,6 +10,25 @@
     <div class="eof">-&nbsp;EOF&nbsp;-</div>
     <p class="declare">声明:本文采用<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank" rel="nofollow" title="署名-非商业性使用-相同方式共享">BY-NC-SA</a>协议进行授权.转载请注明: <a href="{{ page.url  }}" title="{{ page.title }} " rel="nofollow">{{ page.title  }}</a></p>
     <hr>
+	<!-- bdshare provider -->	
+	<style>
+		.bdsharebuttonbox{
+			float:right;
+		}
+	</style>
+	<div class="bdsharebuttonbox">
+		<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+		<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+		<a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+		<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+		<a href="#" class="bds_more" data-cmd="more"></a>
+	</div>
+	<script>
+		window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+	</script>
+	<!--- end bdshare -->
+	<!--- {% include JB/sharing %} -->
+	
     <div class="pagination">
       <ul>
       {% if page.previous %}
