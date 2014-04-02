@@ -14,29 +14,37 @@ $(document).ready(function(){
     var flag=false;
     //用于跳过第一个H1
     var i=1
+
+	var index = 1;
     //获取数据
     $(":header").each(function(){
-	if (i==1){
-		i=2
-		return true
-	}
-	if ( $(this).is('h1')){
-		if(flag==true){
-			$('.ad_menu_ul').append(end)
+		if (i==1){
+			i=2
+			return true; //continue   return false; //break
 		}
-		flag=false;
-		var str='<li><a href="#'+$(this).attr('id')+'">'+$(this).text()+'</a></li>';
-		$('.ad_menu_ul').append(str);
-	}
-	if ( $(this).is('h2')){
-		if(flag==false){
-			flag=true;
-			$('.ad_menu_ul').append(start)
+
+		var id = 'section_' + index;
+		index++;
+		$(this).attr('id',id);
+
+		if ( $(this).is('h1')){
+			if(flag==true){
+				$('.ad_menu_ul').append(end)
+			}
+			flag=false;
+			var str='<li><a href="#'+$(this).attr('id')+'">'+$(this).text()+'</a></li>';
+			$('.ad_menu_ul').append(str);
 		}
-		var str='<li><a href="#'+$(this).attr('id')+'">'+$(this).text()+'</a></li>';
-		$('.ad_menu ul').last().append(str)
-	}
-      })
+		if ( $(this).is('h2')){
+			if(flag==false){
+				flag=true;
+				$('.ad_menu_ul').append(start)
+			}
+			var str='<li><a href="#'+$(this).attr('id')+'">'+$(this).text()+'</a></li>';
+			$('.ad_menu ul').last().append(str)
+		}
+    })
+
     $(".ad_menu").delay(500)
     $(".ad_menu").fadeTo(500,"0.25")
     $(".ad_menu").hover(function(){
