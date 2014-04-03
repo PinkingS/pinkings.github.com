@@ -123,7 +123,217 @@ jQuery是脚本语言，无需编译链接，直接从网上下载一份jQuery�
 
 [5]: http://jquery.com/upgrade-guide/1.9/#jquery-migrate-plugin "http://jquery.com/upgrade-guide/1.9/#jquery-migrate-plugin" 
 
-##在HTML文件中添加jQuery文件
+##在HTML文件中设置jQuery
+下载最新版本的jQuery库，jquery-1.11.0.min.js，放在项目根目录的scripts目录下。我们要写的jQuery文件名为learning-jquery-ch01.js，也放在scripts目录下。本章的第一个例子是一本书的摘录，html文件为：
 
+{% highlight html %}
+<!-- learning-jquery-ch01.html -->
+<!DOCTYPE html>
 
-#To Be Continued ...
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Through the Looking-Glass</title>
+
+	<link rel="stylesheet" href="styles/learning-jquery-ch01.css" type="text/css" />
+
+	<script src="scripts/jquery-1.11.0.min.js"></script>
+	<script src="scripts/learning-jquery-ch01.js"></script>
+
+</head>
+
+<body>
+	<div id="container">
+		<h1>Through the Looking-Glass</h1>
+		<div class="author">by Lewis Carroll</div>
+
+		<div class="chapter" id="chapter-1">
+			<h2 class="chapter-title">1. Looking-Glass House</h2>
+			<p>There was a book lying near Alice on the table, and while she sat watching the White King (for she was still a little anxious about him, and had the ink all ready to throw over him, in case he fainted again), she turned over the leaves, to find some part that she could read, <span class="spoken">“—for it’s all in some language I don’t know,”</span> she said to herself.</p>
+			<p>It was like this.</p>
+			<div class="poem">
+				<h3 class="poem-title">YKCOWREBBAJ</h3>
+				<div id="fred" class="poem-stanza">
+					<div>sevot yhtils eht dna ,gillirb sawT'</div>
+					<div>;ebaw eht ni elbmig dna eryg diD</div>
+					<div>,sevogorob eht erew ysmim llA</div>
+					<div>.ebargtuo shtar emom eht dnA</div>
+				</div>
+			</div>
+			<p>She puzzled over this for some time, but at last a bright thought struck her. <span class="spoken">“Why, it’s a Looking-glass book, of course! And if I hold it up to a glass, the words will all go the right way again.”</span></p>
+			<p>This was the poem that Alice read.</p>
+			<div class="poem">
+				<h3 class="poem-title">JABBERWOCKY</h3>
+				<div class="poem-stanza">
+					<div>'Twas brillig, and the slithy toves</div>
+					<div>Did gyre and gimble in the wabe;</div>
+					<div>All mimsy were the borogoves,</div>
+					<div>And the mome raths outgrabe.</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
+{% endhighlight %}
+
+相应的CSS文件为：
+
+{% highlight CSS %}
+
+/* learning-jquery-ch01.css */
+body {
+	font-family: Helvetica, Arial, sans-serif;
+	color: #000;
+	background: #fff;
+}
+
+h1, h2, h3 {
+	margin-bottom: .2em;
+}
+
+.poem {
+	margin: 0 2em;
+}
+
+.highlight {
+	background-color: #ccc;
+	border: 1px solid #888;
+	font-style: italic;
+	margin: 0.5em 0;
+	padding: 0.5em;
+}
+{% endhighlight %}
+
+目前为止的页面结果如图：
+
+![img](/assets/image/posts/learning-jquery/ch01-1.jpg)
+
+我们可以使用jQuery来为诗歌部分的文字添加新的样式。
+
+##添加我们的jQuery代码
+
+我们自己的代码放在新的js文件中，learning-jquery-ch01.js。在这个例子中，我们只需要添加三行代码：
+
+{% highlight javascript %}
+/* learning-jquery-ch01.js */
+$(document).ready( function() {
+	$('div.poem-stanza').addClass('highlight');
+});
+{% endhighlight %}
+
+我们来看看这段代码做了什么工作。
+
+**找到诗歌部分的文字**
+
+jQuery最基本的功能就是取出页面的一部分元素。这一功能是用`$()`来实现的，一般括号里以字符串作为参数，可以是任意的CSS选择器表达式。在这个例子里，`div.poem-stanza`表示选择出所有div元素里属于poem-stanza类的元素。这里的选择器比较简单，在第2章Selecting Elements中会涉及到一些非常复杂的选择器相关内容。
+
+`$()`会返回一个新的jQuery对象实例，它封装了我们选择出来的DOM元素（0个或多个），然后我们就可以以很多方式操纵它们。在这个例子里，我们需要修改诗歌正文部分的显示方式，因此首先将诗歌正文部分元素选择出来。
+
+**插入新的类**
+
+![img](/assets/image/posts/learning-jquery/ch01-2.jpg)
+
+`.addClass()`方法为我们选择出来的元素添加CSS类，输入参数可以是要添加的类名字符串（1个或多个），也可以是一个函数（jQuery v1.4以后），该函数返回要添加的类名。同样，`.removeClass()`可以移除类，用法和`.addClass()`一样。
+
+{% highlight javascript %}
+// some examples of .addClass() and .removeClass() method
+$( "p" ).addClass( "myClass yourClass" ); //example 1
+$( "p" ).removeClass( "myClass noClass" ).addClass( "yourClass" ); //example 2
+$( "ul li" ).addClass(function( index ) { //example 3
+	return "item-" + index;
+});
+{% endhighlight %}
+
+注意这里我们并不需要写迭代循环来对每一个选出来的元素添加或者移除类，jQuery的隐式迭代实现了这一功能，我们只需要一次调用就可以作用于所有选择出来的元素。这个例子中，将选择出来的诗歌正文部分元素使它们属于highlight类（highlight类的样式已经在CSS文件中设定，灰色背景和一个边框）。
+
+**执行代码**
+
+`$()`和`.addClass()`结合起来就足以实现我们需要的效果了，但是如果我们将这一行代码直接写在js文件的开头，将得不到任何效果。浏览器遇到javascript代码就会立即执行它，而此时浏览器正在处理头部，页面的DOM树还没有准备好，因此我们需要延迟jQuery代码的执行。
+
+通过`$(document).ready()`方法，jQuery允许我们一旦DOM被载入就执行里面的jQuery代码（而非等到所有图片完全加载出来）。本章例子中传给`.ready()`的参数是匿名函数[^2]，这种方法写起来方便，适用于无需**复用**的函数。`.ready()`的参数也可以是一个已经定义的函数名，如：
+
+{% highlight javascript %}
+function addHighlightClass() {
+    $('div.poem-stanza').addClass('highlight');
+}
+
+$(document).ready(addHighlightClass);
+{% endhighlight %}
+
+[^2]: 匿名函数，即function()后面直接加上函数的实现
+
+**完成后的作品**
+
+加入jQuery代码之后，页面变成了这个样子：
+
+![img](/assets/image/posts/learning-jquery/ch01-3.jpg)
+
+由于我们在jQuery代码中给它们添加了`highlight`类，诗歌正文部分变为斜体，被包围在一个框里，就像我们在CSS文件中定义的那样。
+
+#纯JavaScript代码 vs jQuery代码
+
+本例的功能也能用纯javascript代码来完成：
+
+{% highlight javascript %}
+window.onload = function() {
+	var divs = document.getElementsByTagName('div');
+	for (var i = 0; i < divs.length; i++) {
+		if (hasClass(divs[i], 'poem-stanza')  && !hasClass(divs[i], 'highlight')) {
+			divs[i].className += ' highlight';
+		}
+	}
+
+	function hasClass( elem, cls ) {
+		var reClass = new RegExp(' ' + cls + ' ');
+		return reClass.test(' ' + elem.className + ' ');
+	}
+};
+{% endhighlight %}
+
+纯javascript的代码要比jQuery繁复的多，另外，纯javascript代码不能处理许多jQuery会为我们解决的问题，比如：
+
++ 恰当地考虑其他`window.onload`事件处理程序
++ 当DOM准备好时迅速执行
++ 利用现代DOM方法优化元素的获取和其他一些工作
+
+jQuery与实现同等功能的纯javascript代码相比，写起来更简单，更易读，并且执行效率更高。
+
+#使用开发者工具
+
+不同浏览器的开发者工具：
+
++ [Internet Explorer Developer Tools][6]
++ [Safari Web Inspector][7]
++ [Chrome Developer Tools][8]
++ [Firebug for Firefox][9]
++ [Opera Dragonfly][10]
+
+[6]:  http://msdn.microsoft.com/en-us/library/dd565628.aspx "http://msdn.microsoft.com/en-us/library/dd565628.aspx"
+[7]: http://developer.apple.com/technologies/safari/developer-tools.html "http://developer.apple.com/technologies/safari/developer-tools.html"
+[8]: https://developers.google.com/chrome-developer-tools/ "https://developers.google.com/chrome-developer-tools/"
+[9]: http://getfirebug.com/ "http://getfirebug.com/"
+[10]: http://www.opera.com/dragonfly/ "http://www.opera.com/dragonfly/"
+
+这些工具都提供了相似的功能，如：
+
++ 浏览和修改DOM的各个方面
++ 探索CSS和其展示效果之间的关系
++ 方便地追踪特殊方法的脚本执行情况
++ 中断脚本的执行，查看变量的值
+
+##Chrome Developer Tools
+
+书中介绍了几个关于Chrome Dev Tools的非常常用的debug功能：
+
++ **Elements**标签页可以查看页面元素的详细信息，主要用于调试CSS样式
++ **Sources**标签页可以查看脚本文件，在代码行号上右键可以添加断电，查看中间变量
++ **Console**标签页可以查看脚本文件中是不是有语法报错，可以实验jQuery代码，选取元素等。在代码中插入`console.log()`会在这里打印日志
+
+</br></br>
+
+>你羡慕别人月薪几万，却不知道他日日加班到深夜的辛苦；你羡慕别人说走就走四处周游的自由，却不知道他为这份自由放弃的东西。我们追求的该是自己的幸福，而不是比别人幸福。奋斗的路上别总急着奔跑，偶尔停下来，听听生活的道理。
+
+</br>
+</br>
