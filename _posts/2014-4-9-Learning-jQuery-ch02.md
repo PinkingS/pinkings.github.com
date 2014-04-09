@@ -192,5 +192,251 @@ $(document).ready( function() {
 
 ![img](/assets/image/posts/learning-jquery/ch02-3.jpg)
 
+#属性选择器
+
+属性选择器是CSS选择器的一个十分有用的子集，我们可以通过元素的HTML属性来指定某个元素，比如链接的title属性或者图像的alt属性。比如，要选取出所有带有alt属性的图像，只需写成：
+
+{% highlight javascript %}
+$('img[alt]')
+{% endhighlight %}
+
+##给链接添加样式
+
+属性选择器受正则表达式的启发，接受通配符语法来识别字符串起始(\^)或末尾(\$)的字符，还可以用星号(\*)来表达字符串内任意位置的值，及惊叹号(\!)来表达取反的含义。
+
+比如我们想要对不同类型的链接添加不同的样式，我们首先在样式表中添加定义：
+
+{% highlight CSS %}
+a {
+	color: #00c;
+}
+
+a.mailto {
+	background: url(../images/email.png) no-repeat right top;
+	padding-right: 18px;
+}
+
+a.pdflink {
+	background: url(../images/pdf.png) no-repeat right top;
+	padding-right: 18px;
+}
+
+a.henrylink {
+	background-color: #fff;
+	padding: 2px;
+	border: 1px solid #000;
+}
+{% endhighlight %}
+
+然后我们用jQuery将这三个类——**mailto**,**pdflink**,**henrylink**加到适合的链接中。
+
+给所有的邮件链接添加类，我们需要构造一个选择器，这个选择器寻找所有带有以mailto(`^="mailto:"`)开头的`href`属性的链接元素(a)，如下：
+
+{% highlight javascript %}
+$(document).ready( function() {
+     $('a[href^="mailto:"]').addClass('mailto');
+} );
+{% endhighlight %}
+
+由于我们之前定义了样式表，因此信封小图标会出现在邮件链接的后面。
+
+![img](/assets/image/posts/learning-jquery/ch02-5.jpg)
+
+同理，我们寻找href属性以.pdf结尾(`$=".pdf"`)的pdf文件链接，在后面添加一个Adobe Acrobat小图标。
+
+{% highlight javascript %}
+$(document).ready( function() {
+     $('a[href^="mailto:"]').addClass('mailto');
+     $('a[href$=".pdf"]').addClass('pdflink');
+} );
+{% endhighlight %}
+
+![img](/assets/image/posts/learning-jquery/ch02-6.jpg)
+
+属性选择器也可以结合来用，比如我们要将**henrylink**类加到所有以http开头并且包含henry字符的链接中：
+
+{% highlight javascript %}
+$(document).ready( function() {
+     $('a[href^="mailto:"]').addClass('mailto');
+     $('a[href$=".pdf"]').addClass('pdflink');
+     $('a[href^="http"][href*="henry"]').addClass('henrylink');
+} );
+{% endhighlight %}
+
+![img](/assets/image/posts/learning-jquery/ch02-7.jpg)
+
+#自定义选择器
+
+除了CSS选择器，jQuery还添加了自己的自定义选择器[^4]，这些自定义选择器以新的方式强化了已有的CSS选择器的功能。
+
+[^4]: jQuery会尽可能使用原始的DOM选择器引擎来寻找页面元素，但是当使用了自定义选择器时，这种原始的极快的方式就不能使用了，因此建议，当原始方式可以达到效果，并且十分关注性能时，避免频繁使用自定义选择器。
+
+大部分自定义选择器可以帮助我们在已经找到的一系列元素中选择其中的一个或几个。自定义选择器的语法和CSS伪类语法一样，以冒号(\:)开头。比如，要选出类horizontal的div元素中的第二个元素，可以这样写：
+
+{% highlight javascript %}
+$('div.horizontal:eq(1)')
+{% endhighlight %}
+
+注意`:eq(1)`取出集合中的第二个元素，因为javascript数组是从0开始的。相反的，CSS是从1开始的，因此一个CSS选择器`$('div:nth-child(1)')`会取出所有是其父结点的第1个孩子的div元素。不清楚的可以参考[jQuery API文档][2]。
+
+[2]: http://api.jquery.com/category/selectors/ "http://api.jquery.com/category/selectors/"
+
+##给交替行添加样式
+
+两个十分有用的jQuery自定义选择器是`:odd`和`:even`，我们以下面这个例子来说明：
+
+{% highlight html %}
+<!-- learning-jquery-ch02.html -->
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Selected Shakespeare Plays</title>
+
+	<link rel="stylesheet" href="styles/learning-jquery-ch02.css" type="text/css" />
+
+	<script src="scripts/jquery-1.11.0.min.js"></script>
+	<script src="scripts/learning-jquery-ch02.js"></script>
+</head>
+
+<body>
+	<div id="container">
+
+		<h2>Shakespeare's Plays</h2>
+		<table>
+			<tr>
+				<td>As You Like It</td>
+				<td>Comedy</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>All's Well that Ends Well</td>
+				<td>Comedy</td>
+				<td>1601</td>
+			</tr>
+			<tr>
+				<td>Hamlet</td>
+				<td>Tragedy</td>
+				<td>1604</td>
+			</tr>
+			<tr>
+				<td>Macbeth</td>
+				<td>Tragedy</td>
+				<td>1606</td>
+			</tr>
+			<tr>
+				<td>Romeo and Juliet</td>
+				<td>Tragedy</td>
+				<td>1595</td>
+			</tr>
+			<tr>
+				<td>Henry IV, Part I</td>
+				<td>History</td>
+				<td>1596</td>
+			</tr>
+			<tr>
+				<td>Henry V</td>
+				<td>History</td>
+				<td>1599</td>
+			</tr>
+		</table>
+		<h2>Shakespeare's Sonnets</h2>
+		<table>
+			<tr>
+				<td>The Fair Youth</td>
+				<td>1–126</td>
+			</tr>
+			<tr>
+				<td>The Dark Lady</td>
+				<td>127–152</td>
+			</tr>
+			<tr>
+				<td>The Rival Poet</td>
+				<td>78–86</td>
+			</tr>
+		</table>
+
+	</div>
+</body>
+
+</html>
+{% endhighlight %}
+
+不添加样式时：
+
+![img](/assets/image/posts/learning-jquery/ch02-8.jpg)
+
+我们想给这个表格添加一个条纹的效果。首先在CSS中为奇数行定义alt类：
+
+{% highlight CSS %}
+/* learning-jquery-ch02.css */
+tr {
+	background-color: #fff;
+}
+
+.alt {
+	background-color: #ccc;
+}
+{% endhighlight %}
+
+然后在jQuery代码中为所有奇数行添加alt类
+
+{% highlight javascript %}
+// learning-jquery-ch02.js
+$(document).ready( function() {
+	$('tr:even').addClass('alt');
+} );
+{% endhighlight %}
+
+等等！为什么对奇数行使用`:even`呢？原因就和`:eq()`一样，因为javascript是以0开始的，因此第一行的标号为0(偶数)而第二行的标号为1(奇数)...因此效果如图：
+
+![img](/assets/image/posts/learning-jquery/ch02-9.jpg)
+
+注意第二段的第一行是白色背景，因此第一段的最后一行是灰色背景。如果想避免这种情况，一种办法是使用`"nth-child()`选择器来替代，这种选择器相对于元素各自的父结点来计数，而不是相对于所有被取出的元素计数，这个选择器可以接受`odd`或者`even`作为参数。
+
+{% highlight javascript %}
+// learning-jquery-ch02.js
+$(document).ready( function() {
+	$('tr:nth-child(odd)').addClass('alt');
+} );
+{% endhighlight %}
+
+这里为了达到和前面相同的效果，要使用`odd`，因为`:nth-child()`是唯一一个以1开始的jQuery选择器。效果如图：
+
+![img](/assets/image/posts/learning-jquery/ch02-10.jpg)
+
+##根据文本内容查找元素
+
+作为最后一个jQuery自定义选择器的例子，假如出于某些原因我们想要高亮所有**Henry**戏剧，我们需要做的工作只是在CSS中定义一个斜体加粗的类`.highlight{font-weight:bold;font-style:italic;}`之后添加一行jQuery代码：
+
+{% highlight javascript %}
+// learning-jquery-ch02.js
+$(document).ready( function() {
+	$('td:contains(Henry)').addClass('highlight');
+} );
+{% endhighlight %}
+
+不可否认，不适用jQuery或其他客户端编程也有很多方法可以达到表格条纹化及文字高亮的效果，但是，当表格的内容是自动生成的，我们并不能从html文档或服务端代码获取相关信息时，jQuery结合CSS的方法能够很好的达到效果。
+
+##表单选择器
+
+自定义选择器的能力不仅限于根据元素的位置来定位元素。比如当处理表单时，jQuery的自定义选择器和互补的CSS3选择器能够简化我们选取元素的工作。下面的表格列出了一些表单选择器：
+
+选择器    | 匹配元素                                          |
+----------|---------------------------------------------------|
+:input    | 输入域，文本域，选择列表，按钮元素                |
+:button   | 带有值为'button'的'type'属性的按钮元素和输入域元素|
+:enabled  | 启用的表单元素                                    |
+:disabled | 禁用的表单元素                                    |
+:checked  | 选中的单选按钮和复选框元素                        |
+:selected | 选中的下拉列表中的元素                            |
+
+</br>
+
+表单选择器可以和其他选择器结合来发挥更多的功能，比如取出所有选中的单选按钮（非复选框按钮）`$('input[type="radio"]:checked')`，或者取出所有密码输入和禁用的文字输入域元素`$('input[type="password"],input[type="text"]:disabled')`.[^5]
+
+[^5]: 这里只是介绍一些简单的选择器表达式，更多的将在第9章介绍。
+
 
 # To Be Continued ...
