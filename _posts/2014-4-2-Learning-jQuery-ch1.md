@@ -1,7 +1,7 @@
 ---
 layout: post
 time: 2014-4-2
-title: Learning jQuery第4版学习笔记 C1 Getting Started
+title: Learning jQuery第4版中文翻译-第1章入门介绍
 category: 《Learning jQuery》第4版学习笔记
 keywords: jQuery, 概述,介绍
 tags: jQuery, CSS, HTML
