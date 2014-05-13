@@ -85,9 +85,11 @@ JB :
   # Set 'provider' to false to turn commenting off globally.
   #
   comments :
-    provider : disqus
+    provider : duoshuo
     disqus :
       short_name : PinkingS
+    duoshuo :
+      short_name : pinkingsgithub
     livefyre :
       site_id : 123
     intensedebate :
