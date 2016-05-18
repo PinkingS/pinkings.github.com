@@ -1,0 +1,22 @@
+{
+  "name": "pinkings.github.com",
+  "homepage": "https://github.com/PinkingS/pinkings.github.com",
+  "authors": [
+    "liushang <shangliu26@163.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.4.0",
+    "iron-elements": "PolymerElements/iron-elements#^1.0.10",
+    "paper-elements": "PolymerElements/paper-elements#^1.0.7"
+  }
+}
