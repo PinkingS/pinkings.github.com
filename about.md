@@ -1,7 +1,8 @@
 ---
 layout: page
-title: About PinkingS
+title: About
 group: navigation
+permalink: /about/
 ---
 
 #关于作者/About Me#
