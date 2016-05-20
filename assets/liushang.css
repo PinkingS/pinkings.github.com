@@ -26,3 +26,19 @@
   font-size: 16px;
   margin-bottom: 12px;
 }
+
+#site-header #avatar-container nav {
+  font-size: 14px;
+}
+
+#site-header #avatar-container nav a {
+  color: #919496;
+  text-decoration: none;
+}
+
+#site-header #avatar-container nav a:hover {
+  color: #f5f5f5;
+}
+
+
+
