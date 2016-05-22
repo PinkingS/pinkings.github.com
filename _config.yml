@@ -3,12 +3,11 @@
 permalink: /:categories/:year/:month/:day/:title.html
 
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
-#auto: true
-watch: true
-pygments: true
+#pygments: true
+highlighter: rouge
 #markdown: redcarpet
-markdown: rdiscount
-#markdown: kramdown
+#markdown: rdiscount
+markdown: kramdown
 #markdown: Pandoc
 
 rdiscount:
@@ -19,13 +18,18 @@ rdiscount:
 # so be sure to set them if your theme uses them.
 #
 github_username : PinkingS
+
+# site title
 title : Liu Shang's Blog
 tagline: 在程序媛的路上，做最喜欢的事
+
+# author information
 author :
   name : Liu Shang
   email : shangliu26@gmail.com
   github : pinkings
   avatar: /assets/image/avatar.jpg
+  favicon: /assets/image/favicon.ico
   description: 在程序媛的路上，做最喜欢的事
 
 # number of posts shown in one page
