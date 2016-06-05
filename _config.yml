@@ -3,12 +3,15 @@
 permalink: /:categories/:year/:month/:day/:title.html
 
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
-#pygments: true
+
+gems: [jekyll-paginate]
+
+paginate: 5
+
 highlighter: rouge
 #markdown: redcarpet
 #markdown: rdiscount
 markdown: kramdown
-#markdown: Pandoc
 
 rdiscount:
   extensions:

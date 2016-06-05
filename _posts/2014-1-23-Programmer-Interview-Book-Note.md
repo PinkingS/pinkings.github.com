@@ -6,6 +6,7 @@ category: 《程序员面试宝典》笔记
 keywords: 程序员面试宝典,赋值语句,类型转换
 tags: 笔试面试,C/C++
 description: 《程序员面试宝典》第5章的学习笔记和书中部分勘误。
+permalink: /programmer-interview-book-note
 ---
 
 #第5章 程序设计基本概念#

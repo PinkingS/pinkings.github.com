@@ -12,8 +12,26 @@ layout: default
     </h1>
     <!-- title -->
 
+    <div class="post-meta">
+      <ul class="list-inline">
+        <li>
+          {{ post.date | date: "%B" }}
+          {{ post.date | date: "%d" }}
+          {{ post.date | date: "%Y" }}
+        </li>
+        <li>
+          <a href="//github.com/{{ site.github_username }}/{{ site.github_username }}.github.com/blob/master/{{ page.path }}" target="_blank"><i class="fa fa-github"></i>&nbsp;Edit this post on Github</a>
+        </li>
+      </ul>
+    </div>
 
-    {% endfor %}
-
-
+    <section class="post-content">
+      {{ post.excerpt | remove: '.</p>' | append: '...</p>' }}
+    </section>
   </article>
+
+
+  {% endfor %}
+
+
+</section>

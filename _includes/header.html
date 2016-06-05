@@ -8,11 +8,21 @@
   <p id="author-intro">{{ site.author.description }}</p>
 
   <nav>
-    <ul id="nav">
+    <ul id="nav" class="list-inline hidden-md hidden-lg">
       <li><a href="/">Posts</a></li>
       <li><a href="/about">About</a></li>
       <li><a href="//github.com/{{ site.github_username }}" target="_blank">Github</a></li>
     </ul>
   </nav>
+
+  <div id="nav-container" class="visible-md-block visible-lg-block">
+    <nav>
+      <ul class="list-unstyled">
+        <li><a href="/">Post</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="//github.com/{{ site.github_username }}" target="_blank">Github</a></li>
+      </ul>
+    </nav>
+  </div>
 
 </header>

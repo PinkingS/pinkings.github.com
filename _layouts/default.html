@@ -3,7 +3,28 @@
   {% include head.html %}
 
   <body>
-  {% include header.html %}
+    {% include header.html %}
+
+    <div id="page-wrap">
+      <div id="page-content">
+        <div id="content">
+          {{ content }}
+        </div>
+        <aside>
+          <section>
+            <h3>Recent Posts</h3>
+
+            <ul class="list-unstyled">
+              {% for post in site.posts limit:5 %}
+              <li>
+                <a href="{{ post.url }}">{{ post.title }}</a>
+              </li>
+              {% endfor %}
+            </ul>
+          </section>
+        </aside>
+      </div>
+    </div>
   </body>
 </html>
 
