@@ -14,9 +14,11 @@ description: Android Studio因为ADB没有响应而无法启动的解决方案�
 
 说明ADB响应失败，此时点击**wait more**就会不断弹出这个对话框，点击**Restart**也无济于事。
 
-##解决方法：
+## 解决方法：
 
 1.打开cmd，输入`adb kill-server`,`adb start-server`，`adb nodaemon server`,显示
+
+<!--excerpt_separator-->
 
 ![img](/assets/image/posts/2015-1-16-ADB/1.jpg)
 

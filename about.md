@@ -5,7 +5,7 @@ group: navigation
 permalink: /about/
 ---
 
-#关于作者/About Me#
+# 关于作者/About Me #
 
 **程序媛**小硕一枚.
 
@@ -27,7 +27,7 @@ permalink: /about/
 
 嗯，就是这些啦。
 
-#联系作者/Contact Me#
+# 联系作者/Contact Me #
 
 Email:<shangliu26@gmail.com>
 

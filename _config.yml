@@ -6,8 +6,6 @@ exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
 
 gems: [jekyll-paginate]
 
-paginate: 5
-
 highlighter: rouge
 #markdown: redcarpet
 #markdown: rdiscount
@@ -37,6 +35,8 @@ author :
 
 # number of posts shown in one page
 paginate: 5
+
+excerpt_separator: <!--excerpt_separator-->
 
 # The production_url is only used when full-domain names are needed
 # such as sitemap.txt 

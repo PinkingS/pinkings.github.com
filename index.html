@@ -28,6 +28,9 @@ layout: default
     <section class="post-content">
       {{ post.excerpt | remove: '.</p>' | append: '...</p>' }}
     </section>
+
+	<section class="post-reading-link">
+		<a href="{{ post.url }}">继续阅读&nbsp;<i class="fa fa-angle-double-right"></i></a>
   </article>
 
 
