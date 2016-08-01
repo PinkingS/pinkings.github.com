@@ -346,3 +346,5 @@ var el2 = document.createElement('my-element');
 {% endhighlight %}
 
 `Polymer.Class`是希望能够在可预测的未来，当ES6类能够被定义和提供给`document.registerElement`时，提供类似的设计。
+
+英文链接地址：[https://www.polymer-project.org/1.0/docs/devguide/registering-elements#element-constructor](https://www.polymer-project.org/1.0/docs/devguide/registering-elements#element-constructor)
